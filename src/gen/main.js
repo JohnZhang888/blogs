@@ -1,13 +1,15 @@
 import { genArticleContent } from './article-content.js';
 
 const page = document.querySelector("html");
-let url = window.location.href;
-console.log(url);
-let res = url.match(/\/([^/]*)$/);
-let pageID = "";
-if (res === null) {
-  pageID = "index";
-} else pageID = res[1];
+// let url = window.location.href;
+// console.log(url);
+// let res = url.match(/\/([^/]*)$/);
+// let pageID = "";
+// if (res === null) {
+//   pageID = "index";
+// } else pageID = res[1];
+let pageID = new URLSearchParams(window.location.search).get("page");
+if (pageID === null) pageID = "index";
 console.log(pageID);
 
 let content = "";
