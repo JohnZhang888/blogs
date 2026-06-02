@@ -1,8 +1,9 @@
 import { marked } from "https://cdn.osyb.cn/npm/marked/lib/marked.esm.js"
 
 export async function genArticleContent(pageID) {
-  const dataResponse = await fetch(`/page-data/${pageID}/data.json`);
-  const pageData = await dataResponse.json();
+  const dataResponse = await fetch(`/page-data/menifest.json`);
+  const data = await dataResponse.json();
+  const pageData = data[pageID];
 
   const contentResponse = await fetch(`/page-data/${pageID}/content.md`);
   const passageMarkdown = await contentResponse.text();

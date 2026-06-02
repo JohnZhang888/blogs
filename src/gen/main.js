@@ -1,4 +1,5 @@
 import { genArticleContent } from './article-content.js';
+import { genIndexContent } from './index.js';
 
 const page = document.querySelector("html");
 // let url = window.location.href;
@@ -13,7 +14,9 @@ if (pageID === null) pageID = "index";
 console.log(pageID);
 
 let content = "";
-if (pageID !== "index") {
+if (pageID === "index") {
+  content = await genIndexContent();
+} else {
   content = await genArticleContent(pageID);
 }
 page.innerHTML = `
