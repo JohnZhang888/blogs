@@ -7,7 +7,7 @@ export async function genIndexContent() {
   for (let id in data) {
     console.log(id);
     console.log(data[id]);
-    list += `<li><a href="/?page=${id}">${data[id].title}</a></li>`
+    list += `<li><a href="?page=${id}">${data[id].title}</a></li>`
   }
 
   return list;
