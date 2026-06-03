@@ -8,35 +8,35 @@
 }
 
 /* 小屏幕 ≥576px */
-@media (min-width: var(--small)) {
+@media (min-width: 576px) {
   .container {
     max-width: 540px;
   }
 }
 
 /* 中等屏幕 ≥768px */
-@media (min-width: var(--medium)) {
+@media (min-width: 768px) {
   .container {
     max-width: 720px;
   }
 }
 
 /* 大屏幕 ≥992px */
-@media (min-width: var(--large)) {
+@media (min-width: 992px) {
   .container {
     max-width: 960px;
   }
 }
 
 /* 超大屏幕 ≥1200px */
-@media (min-width: var(--x-large)) {
+@media (min-width: 1200px) {
   .container {
     max-width: 1140px;
   }
 }
 
 /* 超超大屏幕 ≥1400px（Bootstrap 5 的 XXL 断点） */
-@media (min-width: var(--xx-large)) {
+@media (min-width: 1400px) {
   .container {
     max-width: 1320px;
   }
