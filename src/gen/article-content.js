@@ -5,7 +5,7 @@ export async function genArticleContent(pageID) {
   const data = await dataResponse.json();
   const pageData = data[pageID];
 
-  const contentResponse = await fetch(`/page-data/${pageID}/content.md`);
+  const contentResponse = await fetch(`/page-data/${pageID}.md`);
   const passageMarkdown = await contentResponse.text();
 
   const markdownParsed = marked.parse(passageMarkdown);
