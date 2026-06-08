@@ -1,0 +1,17 @@
+@import url("variables/colors.css");
+
+.topbar {
+  z-index: 114514;
+  height: 48px;
+  width: 100%;
+  margin-bottom: 32px;
+  background-color: var(--md-sys-color-secondary-container);
+  display: flex;
+  align-items: center;
+  padding: 0px 16px 0px 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+

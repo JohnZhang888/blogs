@@ -1,5 +1,5 @@
 :root {
-  --basic-radius: 8px;
+  --basic-radius: 4px;
 
   --radius-m: var(--basic-radius);
   --radius-l: calc(var(--basic-radius) * 2);

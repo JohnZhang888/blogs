@@ -2,7 +2,7 @@ import { genArticleContent } from './article-content.js';
 import { genIndexContent } from './index.js';
 import hljs from "https://cdn.osyb.cn/gh/highlightjs/cdn-release@11.11.1/build/es/highlight.min.js"
 
-const page = document.querySelector("body");
+const page = document.querySelector("content");
 let pageID = new URLSearchParams(window.location.search).get("page");
 if (pageID === null) pageID = "index";
 console.log(pageID);
@@ -14,7 +14,6 @@ if (pageID === "index") {
   content = await genArticleContent(pageID);
 }
 page.innerHTML = `
-  <p>Example Shell</p>
   <div class="container"> 
     ${content}
   </div>

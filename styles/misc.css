@@ -2,4 +2,14 @@
 
 body {
   background-color: var(--md-sys-color-background);
+  margin: 0;
+}
+
+.katex {
+  z-index: 0;
+}
+
+content {
+  display: block;
+  margin-top: calc(48px + 32px);
 }
