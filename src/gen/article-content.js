@@ -2,7 +2,7 @@ import { marked } from "https://cdn.osyb.cn/npm/marked/lib/marked.esm.js"
 
 
 export async function genArticleContent(pageID) {
-  const dataResponse = await fetch(`page-data/menifest.json`);
+  const dataResponse = await fetch(`page-data/basic-data.json`);
   const data = await dataResponse.json();
   const pageData = data[pageID];
 

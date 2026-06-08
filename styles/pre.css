@@ -1,0 +1,15 @@
+@import url("variables/colors.css");
+@import url("variables/sizes.css");
+
+.hljs {
+  background-color: var(--md-sys-color-surface-container-low) !important;
+  color: var(--md-sys-color-on-surface-variant);
+  border-radius: var(--radius-m);
+}
+
+code {
+  background-color: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+  border-radius: var(--radius-m);
+  padding: 2px 4px 2px 4px;
+}

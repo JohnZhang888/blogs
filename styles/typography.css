@@ -1,5 +1,9 @@
-html {
+@import url("variables/colors.css");
+
+body {
   font-family: "Google Sans Text", "Noto Sans SC", sans-serif;
+  font-size: 1rem;
+  color: var(--md-sys-color-on-background);
   font-optical-sizing: auto;
 }
 

@@ -1,0 +1,8 @@
+:root {
+  --basic-radius: 8px;
+
+  --radius-m: var(--basic-radius);
+  --radius-l: calc(var(--basic-radius) * 2);
+
+  font-size: 1rem;
+}
