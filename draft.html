@@ -1,49 +1,50 @@
 <!DOCTYPE html>
-<!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly -->
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans+Display|Google+Sans+Text|Noto+Sans+SC">
+    <link rel="stylesheet" href="https://cdn.osyb.cn/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdn.osyb.cn/npm/katex@0.17.0/dist/katex.min.css" integrity="sha384-vlBdW0r3AcZO/HboRPznQNowvexd3fY8qHOWkBi5q7KGgqJ+F48+DceybYmrVbmB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.osyb.cn/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.osyb.cn/npm/katex@0.17.0/dist/katex.min.js" integrity="sha384-AtrdNsnxl/75rvBneBVH7DtOvCxSVahR2zWqle1coBKd8DEmLoviqNeJSx64gNAs" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.osyb.cn/npm/katex@0.17.0/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <title>Document</title>
   </head>
-  
-  <body>
-    <button type="button" class="btn btn-primary">Primary</button>
-    <div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Accordion Item #1
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the first item’s accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+  <body class="light">
+    <div class="topbar">
+      <a href="./"><img src="resources/logo-light.svg" height="32px"></a>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the second item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+    <content>
+      <div class="container">
+        <div class="responsive-row">
+          <div class="box-left">
+            <div class="sidebar-title">文章列表</div>
+            <a href="./?page=name"><div class="sidebar-item">一些文字</div></a>
+            <a href="./?page=name"><div class="sidebar-item-selected">一些文字</div></a>
+          </div>
+          <div class="box-center">
+            <h1 style="margin-top: -8px;">${pageData.title}</h1>
+            <div style="margin: 12px 0 8px 0">
+              <p class="faded-text" style="margin: 0 0 0 0;"><i class="bi bi-pencil-fill"></i>&ensp;${pageData.author}&emsp;&emsp;<i class="bi bi-calendar-fill"></i>&ensp;${pageData.date}</p>
+              <p class="faded-text" style="margin: 4px 0 0 0;">${pageData.description}</p>
+            </div>
+          </div>
+          <div class="box-right">
+            <div class="sidebar-title">目录</div>
+            <a href="#123"><div class="sidebar-item">一些文字</div></a>
+            <a href="#456"><div class="sidebar-item">一些文字</div></a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the third item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-</div>
+    </content>
+    <script type="module" src="src/gen/main.js"></script>
   </body>
+
 </html>

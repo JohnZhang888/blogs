@@ -1,0 +1,11 @@
+@import url("variables/colors.css");
+@import url("variables/sizes.css");
+
+blockquote {
+  box-sizing: border-box;
+  border-left: 8px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-m);
+  margin: 0px 0px 0px 0px;
+  padding-left: 12px;
+  opacity: 0.7;
+}

@@ -2,14 +2,14 @@
 @import url("variables/sizes.css");
 
 .hljs {
-  background-color: var(--md-sys-color-secondary-container) !important;
-  color: var(--md-sys-color-on-secondary-container);
+  background-color: var(--md-sys-color-surface-container) !important;
+  color: var(--md-sys-color-on-surface-variant);
   border-radius: var(--radius-l);
 }
 
 code {
-  background-color: var(--md-sys-color-tertiary-container);
-  color: var(--md-sys-color-on-tertiary-container);
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface-variant);
   border-radius: var(--radius-m);
   padding: 2px 4px 2px 4px;
 }

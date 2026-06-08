@@ -1,0 +1,27 @@
+@import url("variables/colors.css");
+@import url("variables/sizes.css");
+
+.sidebar-title {
+  font-weight: 600;
+}
+
+.sidebar-item, .sidebar-item-selected, .sidebar-title {
+  padding: 4px 8px 4px 8px;
+  margin: 4px 8px 4px 8px
+}
+
+.sidebar-item {
+  color: var(--md-sys-color-on-background) !important;
+  opacity: 0.7;
+}
+
+.sidebar-item-selected {
+  border-radius: var(--radius-m);
+  background-color: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container) !important;
+}
+
+.sidebar-item-selected:hover {
+  filter: brightness(0.9) !important;
+  background-color: var(--md-sys-color-tertiary-container) !important;
+}

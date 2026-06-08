@@ -3,25 +3,15 @@
 
 table {
   background-color: var(--md-sys-color-outline-variant);
-  /* border--radius: var(---radius-l); */
+  border-collapse: collapse;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  border: 1px solid var(--md-sys-color-outline-variant);
 }
 
 th, td {
   background-color: var(--md-sys-color-surface-container-low);
   padding: 8px 16px 8px 16px;
   z-index: -1;
-  /*border: 2px solid var(--md-sys-color-outline-variant);*/
-}
-
-table thead:first-child {
-  border-top-left-radius: var(--radius-l);
-}
-table thead:last-child {
-  border-top-right-radius: var(--radius-l);
-}
-table tbody tr:first-child {
-  border-bottom-left-radius: var(--radius-l);
-}
-table tbody tr:last-child {
-  border-bottom-right-radius: var(--radius-l);
+  border: 1px solid var(--md-sys-color-outline-variant);
 }

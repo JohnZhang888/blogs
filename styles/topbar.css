@@ -5,7 +5,7 @@
   height: 48px;
   width: 100%;
   margin-bottom: 32px;
-  background-color: var(--md-sys-color-secondary-container);
+  background-color: var(--md-sys-color-surface-container);
   display: flex;
   align-items: center;
   padding: 0px 16px 0px 16px;

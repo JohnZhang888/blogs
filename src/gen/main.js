@@ -19,6 +19,11 @@ page.innerHTML = `
   </div>
 `;
 
+const subtitles = document.querySelectorAll("h2");
+for (const subtitle of subtitles) {
+  subtitle.setAttribute("id", subtitle.innerHTML)
+}
+
 hljs.highlightAll();
 
 const renderKaTeX = () => {

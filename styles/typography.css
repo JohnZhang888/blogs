@@ -9,7 +9,18 @@ body {
 
 h1, h2, h3 {
   font-family: "Google Sans Display", "Noto Sans SC", sans-serif;
-  font-weight: lighter;
+}
+h1 {
+  font-weight: 400;
+}
+h2 {
+  font-weight: 500;
+}
+h3 {
+  font-weight: 600;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 16px 0 0 0;
 }
 
 .small-text {
@@ -34,7 +45,7 @@ h1 {
 
 @media (min-width: 992px) {
   h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   h2 {
     font-size: 2rem;
@@ -42,4 +53,11 @@ h1 {
   h3 {
     font-size: 1.5rem;
   }
+}
+
+.default-color {
+  color: --var(--md-sys-color-on-background);
+}
+.faded-text {
+  opacity: 0.7;
 }
