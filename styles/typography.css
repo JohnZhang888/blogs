@@ -20,7 +20,7 @@ h3 {
   font-weight: 600;
 }
 h1, h2, h3, h4, h5, h6 {
-  margin: 16px 0 0 0;
+  margin: 16px 0 8px 0;
   scroll-margin-top: 64px;
 }
 
@@ -57,8 +57,8 @@ h1 {
 }
 
 .default-color {
-  color: --var(--md-sys-color-on-background);
+  color: var(--md-sys-color-on-background);
 }
 .faded-text {
-  opacity: 0.7;
+  color: var(--md-sys-color-outline);
 }
