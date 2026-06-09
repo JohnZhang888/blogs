@@ -6,11 +6,17 @@
 
 @media (min-width: 992px) {
   .responsive-row {
+    align-items: flex-start;
     flex-direction: row;
   }
   .responsive-row .box-left {
     flex: 0 0 276px;
     width: 276px;
+    position: sticky;
+    top: calc(48px + 32px);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    align-self: flex-start;
     order: 0;
   }
   .responsive-row .box-center {
@@ -21,6 +27,17 @@
   .responsive-row .box-right {
     flex: 0 0 276px;
     width: 276px;
+    position: sticky;
+    top: calc(48px + 32px);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    align-self: flex-start;
     order: 2;
+  }
+}
+
+@media (max-width: 991px) {
+  .box-left, .box-right {
+    display: none;
   }
 }

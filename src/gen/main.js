@@ -19,9 +19,14 @@ page.innerHTML = `
   </div>
 `;
 
-const subtitles = document.querySelectorAll("h2");
+const subtitles = document.querySelectorAll(".markdownContent h2");
 for (const subtitle of subtitles) {
   subtitle.setAttribute("id", subtitle.innerHTML)
+}
+
+const links = document.querySelectorAll(".markdownContent a");
+for (const link of links) {
+  link.classList.add("link-primary");
 }
 
 hljs.highlightAll();

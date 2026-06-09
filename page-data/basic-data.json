@@ -1,15 +1,15 @@
 {
-  "another": {
-    "title": "这是另一篇文章",
-    "description": "这是对其的描述",
-    "date": "2026-06-02",
+  "26060901": {
+    "title": "题解：P16724 [GKS 2019 #A] Parcels",
+    "description": "题解",
+    "date": "2026-06-09",
     "author": "JZ8",
     "pinValue": 0
   },
-  "name": {
-    "title": "P15652 [省选联考 2026] 排列游戏 / perm",
-    "description": "一道臭名昭著的交互题。",
-    "date": "2024-06-01",
+  "25122101": {
+    "title": "学习笔记：网络流",
+    "description": "关于网络流",
+    "date": "2025-12-21",
     "author": "JZ8",
     "pinValue": 0
   }

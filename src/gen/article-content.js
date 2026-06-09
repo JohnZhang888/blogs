@@ -1,22 +1,50 @@
 import { marked } from "https://cdn.osyb.cn/npm/marked/lib/marked.esm.js"
 
-
+// 生成文章页面内容：渲染 Markdown、构建文章列表和目录。
 export async function genArticleContent(pageID) {
+  // 加载页面元数据并获取当前页面的信息。
   const dataResponse = await fetch(`page-data/basic-data.json`);
   const data = await dataResponse.json();
   const pageData = data[pageID];
 
+  // 加载当前文章的 Markdown 源内容。
   const contentResponse = await fetch(`page-data/${pageID}.md`);
-  const passageMarkdown = await contentResponse.text();
-  
+  const passageMarkdown = (await contentResponse.text()).replace(/\\/g, "\\\\");
 
   const markdownParsed = marked.parse(passageMarkdown);
 
-  const dataResponseList = await fetch(`page-data/basic-data.json`);
-  const dataList = await dataResponseList.json();
-  console.log(dataList);
+  const sortedEntries = sortPageEntries(data);
+  const leftBarList = buildLeftBar(sortedEntries, pageID);
+  const rightBarList = buildRightBar(passageMarkdown);
 
-  const sortedEntries = Object.entries(dataList).sort(([idA, itemA], [idB, itemB]) => {
+  // 输出最终页面布局，包括左侧文章列表、右侧目录和正文内容。
+  return `
+  <div class="responsive-row">
+          <div class="box-left">
+            <div class="sidebar-title">文章列表</div>
+            ${leftBarList}
+          </div>
+          <div class="box-right">
+            <div class="sidebar-title">目录</div>
+            ${rightBarList}
+          </div>
+          <div class="box-center">
+            <h1 style="margin-top: -8px;">${pageData.title}</h1>
+            <div style="margin: 12px 0 8px 0">
+              <p class="faded-text" style="margin: 0 0 0 0;"><i class="bi bi-pencil-fill"></i>&ensp;${pageData.author}&emsp;&emsp;<i class="bi bi-calendar-fill"></i>&ensp;${pageData.date}</p>
+              <p class="faded-text" style="margin: 4px 0 0 0;">${pageData.description}</p>
+              <div class="markdownContent">
+                ${markdownParsed}
+              </div>
+            </div>
+          </div>
+          
+        </div>
+  `;
+}
+
+function sortPageEntries(pageData) {
+  return Object.entries(pageData).sort(([idA, itemA], [idB, itemB]) => {
     const pinA = Number(itemA.pinValue ?? 0);
     const pinB = Number(itemB.pinValue ?? 0);
     if (pinA !== pinB) {
@@ -33,48 +61,26 @@ export async function genArticleContent(pageID) {
     const titleB = itemB.title ?? "";
     return titleA.localeCompare(titleB);
   });
+}
 
-  let leftBarList = ``;
+function buildLeftBar(sortedEntries, currentPageID) {
+  let html = ``;
   for (const [id, item] of sortedEntries) {
-    console.log(id);
-    console.log(item);
-    if (id == pageID) {
-      leftBarList += `<a href="./?page=${id}"><div class="sidebar-item-selected">${item.title}</div></a>`;
-    }
-    else {
-      leftBarList += `<a href="./?page=${id}"><div class="sidebar-item">${item.title}</div></a>`;
-    }
+    const className = id == currentPageID ? "sidebar-item-selected" : "sidebar-item";
+    html += `<a href="./?page=${id}"><div class="${className}">${item.title}</div></a>`;
   }
+  return html;
+}
 
+function buildRightBar(markdownText) {
   const subtitles = Array.from(
-    passageMarkdown.matchAll(/^##\s+(.*)$/gm),
+    markdownText.matchAll(/^##\s+(.*)$/gm),
     (match) => match[1].trim()
   );
 
-  let rightBarList = ``;
+  let html = ``;
   for (const subtitle of subtitles) {
-    rightBarList += `<a href="#${subtitle}"><div class="sidebar-item">${subtitle}</div></a>`
+    html += `<a href="#${subtitle}"><div class="sidebar-item">${subtitle}</div></a>`;
   }
-
-  return `
-  <div class="responsive-row">
-          <div class="box-left">
-            <div class="sidebar-title">文章列表</div>
-            ${leftBarList}
-          </div>
-          <div class="box-right">
-            <div class="sidebar-title">目录</div>
-            ${rightBarList}
-          </div>
-          <div class="box-center">
-            <h1 style="margin-top: -8px;">${pageData.title}</h1>
-            <div style="margin: 12px 0 8px 0">
-              <p class="faded-text" style="margin: 0 0 0 0;"><i class="bi bi-pencil-fill"></i>&ensp;${pageData.author}&emsp;&emsp;<i class="bi bi-calendar-fill"></i>&ensp;${pageData.date}</p>
-              <p class="faded-text" style="margin: 4px 0 0 0;">${pageData.description}</p>
-              ${markdownParsed}
-            </div>
-          </div>
-          
-        </div>
-  `;
+  return html;
 }
