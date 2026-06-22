@@ -1,9 +1,7 @@
-@import url("variables/colors.css");
-
-body {
+body, button {
   font-family: "Google Sans Text", "Noto Sans SC", sans-serif;
   font-size: 1rem;
-  color: var(--md-sys-color-on-background);
+  color: var(--text);
   font-optical-sizing: auto;
 }
 
@@ -56,8 +54,8 @@ h3 {
 }
 
 .default-color {
-  color: var(--md-sys-color-on-background);
+  color: var(--text);
 }
 .faded-text {
-  color: var(--md-sys-color-outline);
+  color: var(--text-secondary);
 }

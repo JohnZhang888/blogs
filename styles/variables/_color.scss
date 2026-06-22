@@ -1,0 +1,84 @@
+:root {
+  --none: #00000000;
+  --none-gradient: linear-gradient(to bottom, #00000000, #00000000);
+}
+
+@mixin clickable-background-color($_color) {
+  background-color: $_color;
+
+  &:hover {
+    background-color: $_color;
+    background-color: color-mix(in oklch, $_color 90%, black 10%);
+  }
+
+  &:active {
+    background-color: $_color;
+    background-color: color-mix(in oklch, $_color 80%, black 20%);
+  }
+}
+
+@mixin clickable-color($_color) {
+  color: $_color;
+
+  &:hover {
+    color: $_color;
+    color: color-mix(in oklch, $_color 90%, black 10%);
+  }
+
+  &:active {
+    color: $_color;
+    color: color-mix(in oklch, $_color 80%, black 20%);
+  }
+}
+
+.light {
+  --primary: #008678;
+  --on-primary: #FFFFFF;
+  --primary-subtle: #aeefe2;
+  --on-primary-subtle: var(--primary);
+
+  --background: #F2F4F4;
+  --surface: #FFFFFF;
+  --surface-transparent: #FFFFFF99;
+  --surface-border: #0000000F;
+  --surface-variant: #00000030;
+  --text: #000000E4;
+  --text-secondary: #0000009E;
+  --text-tertiary: #00000072;
+  --menu-selected: #0000001a;
+  --menu-hover: #0000000d;
+  --shadow: 0px 4px 12px rgba(0,0,0,0.08), 0px 2px 4px rgba(0,0,0,0.04);
+  --shadow-right: 4px 0px 12px rgba(0,0,0,0.07), 0px 2px 4px rgba(0,0,0,0.03);
+  --shadow-l: 0px 8px 24px rgba(0,0,0,0.12), 0px 4px 8px rgba(0,0,0,0.06);
+  --shadow-l-right: 8px 0px 24px rgba(0,0,0,0.12), 0px 4px 8px rgba(0,0,0,0.06);
+
+  // --block-border-image-secondary: linear-gradient(to bottom, #0000000F 0%, #0000000F 91%, #00000029 100%);
+  // --block-border-image-primary: linear-gradient(to bottom, #FFFFFF14 0%, #FFFFFF14 91%, #00000066 100%);
+}
+
+.dark {
+  --primary: #009484;
+  --on-primary: #FFFFFF;
+  --primary-subtle: #003731;
+  --on-primary-subtle: var(--primary);
+
+  --background: #1C1E1E;
+  --surface: #000000;
+  --surface-transparent: #00000099;
+  --surface-border: #FFFFFF0F;
+  --text: #FFFFFFE4;
+  --text-secondary: #FFFFFF9E;
+  --text-tertiary: #FFFFFF72;
+  --menu-selected: #FFFFFF30;
+  --menu-hover: #FFFFFF15;
+  --shadow: /*0px 4px 12px rgba(255,255,255,0.07), 0px 2px 4px rgba(255,255,255,0.03)*/ 0px 0px 0px 1px var(--surface-border);
+  --shadow-right: /*4px 0px 12px rgba(255,255,255,0.07), 0px 2px 4px rgba(255,255,255,0.03)*/ 0px 0px 0px 1px var(--surface-border);
+  --shadow-l: /*0px 8px 24px rgba(255,255,255,0.09), 0px 4px 8px rgba(255,255,255,0.04)*/ 0px 0px 0px 1px var(--surface-border);
+  --shadow-l-right: /*8px 0px 24px rgba(255,255,255,0.12), 0px 4px 8px rgba(255,255,255,0.06)*/ 0px 0px 0px 1px var(--surface-border);
+}
+
+@mixin acrylic {
+  background-color: var(--surface-transparent);
+  -webkit-backdrop-filter: blur(50px) saturate(1.5);
+  backdrop-filter: blur(50px) saturate(1.5);
+}

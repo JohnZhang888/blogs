@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans+Display|Google+Sans+Text|Noto+Sans+SC">
-    <link rel="stylesheet" href="https://cdn.osyb.cn/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css">
-    <link rel="stylesheet" href="https://cdn.osyb.cn/npm/katex@0.17.0/dist/katex.min.css" integrity="sha384-vlBdW0r3AcZO/HboRPznQNowvexd3fY8qHOWkBi5q7KGgqJ+F48+DceybYmrVbmB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.osyb.cn/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link href="https://cdn.osyb.cn/npm/clipboard-js@0.3.6/index.min.css" rel="stylesheet">
-    <script src="https://cdn.osyb.cn/npm/clipboard-js@0.3.6/clipboard.min.js"></script>
+    <link rel="stylesheet" id="hljs-theme" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css" integrity="sha384-vlBdW0r3AcZO/HboRPznQNowvexd3fY8qHOWkBi5q7KGgqJ+F48+DceybYmrVbmB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/clipboard-js@0.3.6/index.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard-js@0.3.6/clipboard.min.js"></script>
 
     <!-- The loading of KaTeX is deferred to speed up page rendering -->
-    <script defer src="https://cdn.osyb.cn/npm/katex@0.17.0/dist/katex.min.js" integrity="sha384-AtrdNsnxl/75rvBneBVH7DtOvCxSVahR2zWqle1coBKd8DEmLoviqNeJSx64gNAs" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.js" integrity="sha384-AtrdNsnxl/75rvBneBVH7DtOvCxSVahR2zWqle1coBKd8DEmLoviqNeJSx64gNAs" crossorigin="anonymous"></script>
 
     <!-- To automatically render math in text elements, include the auto-render extension: -->
-    <script defer src="https://cdn.osyb.cn/npm/katex@0.17.0/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
     <script>
       (function() {
@@ -24,6 +24,11 @@
         const mode = stored === 'dark' || stored === 'light' ? stored : preferred;
         document.documentElement.classList.remove('light', 'dark');
         document.documentElement.classList.add(mode);
+        if (mode === "light") {
+          document.querySelector("#hljs-theme").setAttribute("href", "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github.min.css");
+        } else {
+          document.querySelector("#hljs-theme").setAttribute("href", "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github-dark.min.css");
+        }
       })();
     </script>
     <link rel="stylesheet" type="text/css" href="styles/main.css">
@@ -32,13 +37,16 @@
   </head>
   <body>
     <div class="topbar">
+      <button class="topbar-button topbar-menu-button" type="button" aria-label="打开侧边栏" style="margin-right: 16px;">
+          <i class="bi bi-list"></i>
+        </button>
       <a href="./" class="topbar-logo" aria-label="首页">
         <span class="logo-image" aria-hidden="true"></span>
       </a>
       <div class="topbar-actions">
-        <button class="topbar-button topbar-menu-button" type="button" aria-label="打开侧边栏">
+        <!-- <button class="topbar-button topbar-menu-button" type="button" aria-label="打开侧边栏">
           <i class="bi bi-list"></i>
-        </button>
+        </button> -->
         <a class="topbar-button topbar-link-button" href="https://johnzhang888.github.io/">
           <i class="bi bi-house-door-fill"></i>
           <span>主站</span>

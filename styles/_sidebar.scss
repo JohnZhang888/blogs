@@ -1,0 +1,26 @@
+.sidebar-title {
+  font-weight: 600;
+}
+
+.sidebar-item, .sidebar-item-selected, .sidebar-title {
+  border-radius: var(--radius-m);
+  padding: 4px 8px 4px 8px;
+  margin: 4px 8px 4px 8px
+}
+
+.sidebar-item {
+  
+  color: var(--text-secondary) !important;
+  &:hover {
+    background-color: var(--menu-hover);
+  }
+  &:active {
+    background-color: var(--menu-selected);
+    color: var(--text);
+  }
+}
+
+.sidebar-item-selected {
+  background-color: var(--menu-selected);
+  color: var(--text) !important;
+}

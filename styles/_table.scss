@@ -1,0 +1,12 @@
+table {
+  border-collapse: collapse;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  border: 1px solid var(--surface-border);
+}
+
+th, td {
+  padding: 8px 16px 8px 16px;
+  z-index: -1;
+  border: 1px solid var(--surface-border);
+}

@@ -1,0 +1,35 @@
+@import "variables/_color";
+
+a {
+  text-decoration: none;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+.link-primary {
+  @include clickable-color(var(--primary));
+}
+
+@mixin button {
+  padding: 8px 16px 8px 16px;
+  min-width: 64px;
+  border-radius: var(--radius-m);
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  position: relative;
+}
+
+.button-primary {
+  @include button();
+  @include clickable-background-color(var(--primary));
+  @include clickable-color(var(--on-primary));
+}
+
+.button-primary-subtle {
+  @include button();
+  @include clickable-background-color(var(--primary-subtle));
+  @include clickable-color(var(--on-primary-subtle));
+}

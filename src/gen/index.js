@@ -29,7 +29,7 @@ export async function genIndexContent() {
               <h3><a href="./?page=${id}" class="link-primary">${item.title}</a></h3>
               <div style="margin: 8px 0 8px 0">
                 <p class="faded-text" style="margin: 0 0 0 0;"><i class="bi bi-pencil-fill"></i>&ensp;${item.author}&emsp;&emsp;<i class="bi bi-calendar-fill"></i>&ensp;${item.date}</p>
-                <p class="faded-text" style="margin: 4px 0 0 0;">${item.description}</p>
+                <p class="faded-text index-description" style="margin: 4px 0 0 0;">${item.description}</p>
               </div>
             </div>`;
   }

@@ -1,0 +1,15 @@
+@import "variables/color";
+@import "variables/sizes";
+
+.hljs {
+  background-color: var(--surface-variant) !important;
+  color: var(--text);
+  border-radius: var(--radius-l);
+}
+
+code {
+  background-color: var(--surface-variant);
+  color: var(--text);
+  border-radius: var(--radius-m);
+  padding: 2px 4px 2px 4px;
+}

@@ -1,7 +1,7 @@
-@import url("variables/colors.css");
+@import "./variables/color";
 
 body {
-  background-color: var(--md-sys-color-background);
+  background-color: var(--background);
   margin: 0;
 }
 
@@ -26,4 +26,10 @@ content {
 .markdownContent blockquote {
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+
+.index-description {
+  word-break: break-all;
+  overflow: hidden;
+  line-clamp: 2;
 }
