@@ -25,13 +25,15 @@ export async function genIndexContent() {
   for (const [id, item] of sortedEntries) {
     console.log(id);
     console.log(item);
-    list += `<div style="margin-bottom: 8px;">
+    list += `
+    <div class="card-variant">
               <h3><a href="./?page=${id}" class="link-primary">${item.title}</a></h3>
               <div style="margin: 8px 0 8px 0">
                 <p class="faded-text" style="margin: 0 0 0 0;"><i class="bi bi-pencil-fill"></i>&ensp;${item.author}&emsp;&emsp;<i class="bi bi-calendar-fill"></i>&ensp;${item.date}</p>
                 <p class="faded-text index-description" style="margin: 4px 0 0 0;">${item.description}</p>
               </div>
-            </div>`;
+            </div>
+            `;
   }
   let res = `<div class="responsive-row">
           <div class="box-left">这里是未来会上线的文章筛选功能。</div>
