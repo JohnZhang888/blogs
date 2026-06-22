@@ -9,7 +9,7 @@ a, button {
 }
 
 .link-primary {
-  @include clickable-color(var(--primary));
+  @include clickable-color(var(--primary-text));
 }
 
 @mixin button {

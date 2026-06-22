@@ -33,6 +33,7 @@
 
 .light {
   --primary: #008678;
+  --primary-text: #005047;
   --on-primary: #FFFFFF;
   --primary-subtle: #aeefe2;
   --on-primary-subtle: var(--primary);
@@ -58,13 +59,14 @@
 
 .dark {
   --primary: #009484;
+  --primary-text: #67d9c7;
   --on-primary: #FFFFFF;
   --primary-subtle: #003731;
   --on-primary-subtle: var(--primary);
 
   --background: #1C1E1E;
   --surface: #000000;
-  --surface-transparent: #00000080;
+  --surface-transparent: #00000099;
   --surface-variant: #FFFFFF1a;
   --surface-border: #FFFFFF0F;
   --text: #FFFFFFE4;
