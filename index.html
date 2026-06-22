@@ -14,8 +14,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.js" integrity="sha384-AtrdNsnxl/75rvBneBVH7DtOvCxSVahR2zWqle1coBKd8DEmLoviqNeJSx64gNAs" crossorigin="anonymous"></script>
 
     <!-- To automatically render math in text elements, include the auto-render extension: -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous" defer></script>
     <script>
       (function() {
         const match = document.cookie.match(/(?:^|;\s*)themeMode=([^;]+)/);
@@ -51,9 +50,7 @@
       </button>
     </div>
     <div class="topbar">
-      <button class="topbar-button topbar-menu-button" type="button" aria-label="打开侧边栏" style="margin-right: 16px;">
-          <span class="material-icons">bookmark</span>
-        </button>
+      <!-- 删除了书签按钮 -->
       <a href="./" class="topbar-logo" aria-label="首页">
         <span class="logo-image" aria-hidden="true"></span>
       </a>
@@ -94,6 +91,10 @@
       <button class="floating-button" id="back-to-top-button" type="button" aria-label="回到顶部" title="回到顶部">
         <span class="material-icons">keyboard_arrow_up</span>
       </button>
+      <!-- 新增书签按钮，只在宽度小于1200px时显示 -->
+      <button class="floating-button bookmark-button" id="bookmark-button" type="button" aria-label="打开侧边栏" title="打开侧边栏">
+        <span class="material-icons">bookmark</span>
+      </button>
     </div>
 
     <content></content>
@@ -101,6 +102,22 @@
     <script type="module" src="src/copy-markdown.js"></script>
     
     <script>
+      // Initialize KaTeX rendering after DOM is loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        // For index page, render any math that might be present
+        if (typeof renderMathInElement !== 'undefined' && 
+            new URLSearchParams(window.location.search).get("page") === null) {
+          renderMathInElement(document.body, {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+              {left: "\\(", right: "\\)", display: false},
+              {left: "\\[", right: "\\]", display: true}
+            ]
+          });
+        }
+      });
+
       function switchDropdownMenu() {
         let menu = document.querySelector(".topbar-dropdown-menu");
         if (menu.style.display === "none" || !menu.style.display) {

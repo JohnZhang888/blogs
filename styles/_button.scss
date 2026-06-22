@@ -123,3 +123,10 @@ a, button {
 .page-index #copy-md-button {
   display: none;
 }
+
+// 书签浮动按钮只在页面宽度小于1200px时显示
+@media (min-width: 1200px) {
+  .bookmark-button {
+    display: none;
+  }
+}

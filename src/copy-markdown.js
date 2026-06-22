@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyMdButton = document.getElementById('copy-md-button');
   if (copyMdButton) {
     copyMdButton.addEventListener('click', async () => {
-      const iconElement = copyMdButton.querySelector('i');
-      const originalIcon = iconElement.className;
+      const iconElement = copyMdButton.querySelector('.material-icons');
+      const originalIcon = iconElement.innerHTML;
       
       // Copy markdown content
       const pageID = new URLSearchParams(window.location.search).get("page") || "index";
@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
         clipboard.copy(passageMarkdown);
         
         // Change icon to check
-        iconElement.className = 'clipboard-check';
+        iconElement.innerHTML = "check";
         
         // Revert after 1 second
         setTimeout(() => {
-          iconElement.className = originalIcon;
+          iconElement.innerHTML = originalIcon;
         }, 1000);
       } catch (error) {
         console.error('Failed to copy markdown:', error);

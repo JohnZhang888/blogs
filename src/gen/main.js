@@ -27,7 +27,7 @@ const drawerPanels = {
   list: document.querySelector('.drawer-panel-list'),
   toc: document.querySelector('.drawer-panel-toc')
 };
-const menuButton = document.querySelector('.topbar-menu-button');
+const menuButton = document.querySelector('#bookmark-button');
 const drawerClose = document.querySelector('.drawer-close-button');
 const themeButton = document.querySelector('.topbar-theme-button');
 const themeIcon = themeButton?.querySelector('span.material-icons');
@@ -126,4 +126,16 @@ if (pageID !== "index") {
   document.querySelectorAll('pre code').forEach((block) => {
     hljs.highlightElement(block);
   });
+
+  // Render math formulas after content is loaded
+  if (typeof renderMathInElement !== 'undefined') {
+    renderMathInElement(document.querySelector('.container'), {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\(", right: "\\)", display: false},
+        {left: "\\[", right: "\\]", display: true}
+      ]
+    });
+  }
 }
