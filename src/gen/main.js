@@ -5,7 +5,8 @@ import hljs from "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/bu
 
 const page = document.querySelector("content");
 let pageID = new URLSearchParams(window.location.search).get("page");
-if (pageID === null) pageID = "index";document.body.classList.add(`page-${pageID}`);console.log(pageID);
+if (pageID === null) pageID = "index";
+document.body.classList.add(`page-${pageID}`);
 
 let content = "";
 if (pageID === "index") {
@@ -29,8 +30,8 @@ const drawerPanels = {
 const menuButton = document.querySelector('.topbar-menu-button');
 const drawerClose = document.querySelector('.drawer-close-button');
 const themeButton = document.querySelector('.topbar-theme-button');
-const themeIcon = themeButton.querySelector('.topbar-theme-icon');
-const themeLabel = themeButton.querySelector('.topbar-theme-label');
+const themeIcon = themeButton?.querySelector('span.material-icons');
+const themeLabel = themeButton?.querySelector('.topbar-theme-label');
 const themeMenu = document.querySelector('.topbar-dropdown-menu');
 const themeItems = Array.from(themeMenu.querySelectorAll('[data-theme]'));
 
@@ -120,40 +121,9 @@ if (pageID !== "index") {
   for (const subtitle of subtitles) {
     subtitle.setAttribute("id", subtitle.innerHTML)
   }
-
-  const links = document.querySelectorAll(".markdownContent a");
-  for (const link of links) {
-    link.classList.add("link-primary");
-  }
-
-  hljs.highlightAll();
-
-  const renderKaTeX = () => {
-    if (typeof renderMathInElement !== "function") return;
-    renderMathInElement(document.body, {
-      delimiters: [
-        { left: "$$", right: "$$", display: true },
-        { left: "$", right: "$", display: false },
-        { left: "\\(", right: "\\)", display: false },
-        { left: "\\[", right: "\\]", display: true }
-      ],
-      throwOnError: false
-    });
-  };
-
-  if (typeof renderMathInElement === "function") {
-    renderKaTeX();
-  } else {
-    window.addEventListener("load", renderKaTeX);
-  }
-
-  const dataResponse = await fetch(`page-data/basic-data.json`);
-  const data = await dataResponse.json();
-
-  document.querySelector("title").innerHTML = `${data[pageID].title} - JZ8 Blogs`;
-} else {
-  document.querySelector("title").innerHTML = "JZ8 Blogs"
+  
+  // Highlight code blocks
+  document.querySelectorAll('pre code').forEach((block) => {
+    hljs.highlightElement(block);
+  });
 }
-
-
-

@@ -33,9 +33,8 @@ export async function genArticleContent(pageID) {
             <h1 style="margin-top: -8px;">${pageData.title}</h1>
             
             
-               <p class="faded-text" style="margin: 0 0 0 0;"><i class="bi bi-pencil-fill"></i>&ensp;${pageData.author}&emsp;&emsp;<i class="bi bi-calendar-fill"></i>&ensp;${pageData.date}</p>
+               <p class="faded-text" style="margin: 0 0 0 0;"><span class="material-icons">edit</span>&ensp;${pageData.author}&emsp;&emsp;<span class="material-icons">calendar_month</span>&ensp;${pageData.date}</p>
               <p class="faded-text" style="margin: 4px 0 8px 0;">${pageData.description}</p>
-              <p><button class="button-primary" onclick="copyMarkdown(this)"><i class="bi bi-clipboard-fill"></i>&ensp;复制 Markdown</button></p>
             </div>  
               <div class="markdownContent card">
                 ${markdownParsed}

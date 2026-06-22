@@ -39,3 +39,17 @@ content {
     margin: 0px 16px 0px 16px
   }
 }
+
+.material-icons {
+  font-size: 1.25em !important;
+  
+  /* 继承父元素的文字颜色，模拟字体颜色 */
+  stroke: currentColor;
+  
+  /* 垂直居中对齐（关键），避免图标偏上或偏下 */
+  vertical-align: -0.15em; 
+  /* 或者使用 middle（需微调），-0.125em 是主流图标库的常见做法 */
+  
+  /* 防止在 flex 或 grid 布局中被拉伸 */
+  flex-shrink: 0;
+}

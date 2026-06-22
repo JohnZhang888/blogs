@@ -4,7 +4,7 @@
   gap: 1rem;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .responsive-row {
     align-items: flex-start;
     flex-direction: row;
@@ -37,7 +37,7 @@
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
   .box-left, .box-right {
     display: none;
   }

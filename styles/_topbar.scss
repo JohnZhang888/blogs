@@ -107,18 +107,22 @@ body.dark .logo-image {
 }
 
 .topbar-dropdown-menu {
-  will-change: transform;
-  position: absolute;
-  right: 0;
-  top: calc(100% + 12px);
+  display: none;
+  @include acrylic();
+  position: fixed;
+  width: 128px;
+  z-index: 5;
+  right: 24px;
+  top: 56px;
   padding: 8px 0;
   min-width: 180px;
   // background-color: var(--md-sys-color-surface-container);
   // border: 1px solid var(--md-sys-color-outline-variant);
   box-shadow: var(--shadow-l);
-  background-color: var(--surface);
   
-  overflow: hidden;
+  // background-color: var(--surface);
+  
+  // overflow: hidden;
   border-radius: var(--radius-m);
   /* box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.3); */
   
@@ -244,7 +248,7 @@ body.dark .logo-image {
   display: none;
 }
 
-@media (min-width: 992px) {
+@media (min-width:1200px) {
   .topbar-menu-button {
     display: none;
   }
@@ -255,14 +259,34 @@ body.dark .logo-image {
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
+  .topbar {
+    padding: 0px 8px;
+  }
   .topbar-link-button,
   .topbar-theme-button {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 6px 8px;
+    min-width: auto;
+    gap: 0.2rem;
   }
-  .topbar-dropdown-menu {
-    right: 0;
-    left: auto;
+  .topbar-actions {
+    margin-right: 32px;
+    flex-shrink: 0;
+    gap: 4px;
   }
+  // 在小屏幕上，确保只有图标显示，文字完全隐藏
+  .topbar-actions .topbar-button span:not(.material-icons),
+  .topbar-actions .topbar-link-button span:not(.material-icons) {
+    display: none !important;
+  }
+  // 确保Material Icons正确显示
+  .topbar-button .material-icons,
+  .topbar-link-button .material-icons {
+    font-size: 1.1rem;
+    display: inline-flex !important;
+  }
+  // .topbar-dropdown-menu {
+  //   right: 32px;
+  //   left: auto;
+  // }
 }

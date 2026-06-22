@@ -8,7 +8,7 @@ a, button {
   cursor: pointer;
 }
 
-.link-primary {
+.link-primary, .markdownContent a {
   @include clickable-color(var(--primary-text));
 }
 
@@ -32,4 +32,94 @@ a, button {
   @include button();
   @include clickable-background-color(var(--primary-subtle));
   @include clickable-color(var(--on-primary-subtle));
+}
+
+// Floating action buttons in bottom-right corner
+.floating-buttons {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  gap: 12px;
+  z-index: 1000;
+  
+  // 只在文章页面显示（非首页）
+  .page-index & {
+    display: none;
+  }
+}
+
+// 在大屏幕上，让按钮与中间栏右侧保持32px距离
+@media (min-width: 0px) {
+  .floating-buttons {
+    // 计算位置：让按钮右边距离中间栏右侧 32px
+    // 中间栏右侧 = 容器内容区右边缘 - 右栏宽度(276px)
+    // 按钮位置 = 中间栏右侧 - 32px = 容器内容区右边缘 - 276px - 32px
+    // 容器内容区右边缘到视口右边距离 = 50vw - (容器max-width / 2)
+    // 所以：right = 50vw - 容器半宽 - 276px - 32px = 50vw - 容器半宽 - 308px
+    
+    @media (min-width: 1400px) {
+      // 容器 max-width: 1320px, 半宽 660px
+      right: calc(50vw - 660px + 276px + 48px);
+    }
+    
+    @media (min-width: 1200px) and (max-width: 1399px) {
+      // 容器 max-width: 1140px, 半宽 570px
+      right: calc(50vw - 570px + 276px + 48px);
+    }
+    
+    @media (min-width: 992px) and (max-width: 1199px) {
+      // 容器 max-width: 960px, 半宽 480px
+      // 注意：1200px 以下侧边栏已隐藏，不需要加 276px
+      right: calc(50vw - 480px + 48px);
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      // 容器 max-width: 720px, 半宽 360px
+      right: calc(50vw - 360px + 48px);
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+      // 容器 max-width: 540px, 半宽 270px
+      right: calc(50vw - 270px + 48px);
+    }
+
+    right: 16px;
+  }
+}
+
+
+
+.floating-button {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-m);
+  @include acrylic;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--surface-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text);
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: var(--shadow-l);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  i {
+    font-size: 1.25rem;
+  }
+}
+
+// 复制 Markdown 按钮只在文章页面显示
+.page-index #copy-md-button {
+  display: none;
 }

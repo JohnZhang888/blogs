@@ -1,7 +1,7 @@
 export const themeOptions = [
-  { value: 'auto', label: '跟随浏览器', icon: 'bi-laptop' },
-  { value: 'light', label: '浅色', icon: 'bi-sun-fill' },
-  { value: 'dark', label: '深色', icon: 'bi-moon-fill' }
+  { value: 'auto', label: '跟随浏览器', icon: 'computer' },
+  { value: 'light', label: '浅色', icon: 'wb_sunny' },
+  { value: 'dark', label: '深色', icon: 'nightlight' }
 ];
 
 const themeCookieName = 'themeMode';
@@ -47,18 +47,20 @@ export function renderThemeMenu(themeItems, mode) {
 
 export function updateThemeButton(themeItems, themeIcon, themeLabel, mode) {
   const option = themeOptions.find(opt => opt.value === mode) || themeOptions[0];
-  themeIcon.className = `topbar-theme-icon bi ${option.icon}`;
-  themeLabel.textContent = option.label;
+  if (themeIcon) {
+    themeIcon.className = `material-icons ${option.icon}`;
+    themeIcon.textContent = option.icon;
+  }
+  if (themeLabel) {
+    themeLabel.textContent = option.label;
+  }
   renderThemeMenu(themeItems, mode);
 }
 
 export function setThemeMode(mode, themeItems, themeIcon, themeLabel) {
   writeCookie(themeCookieName, mode);
-  if (mode === 'auto') {
-    applyMode(getPreferredMode());
-  } else {
-    applyMode(mode);
-  }
+  const actualMode = mode === 'auto' ? getPreferredMode() : mode;
+  applyMode(actualMode);
   updateThemeButton(themeItems, themeIcon, themeLabel, mode);
 }
 
@@ -71,7 +73,9 @@ export function initTheme(themeItems, themeIcon, themeLabel) {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
   mediaQuery.addEventListener('change', () => {
     if (readCookie(themeCookieName) === 'auto') {
-      applyMode(getPreferredMode());
+      const actualMode = getPreferredMode();
+      applyMode(actualMode);
+      updateThemeButton(themeItems, themeIcon, themeLabel, 'auto');
     }
   });
 }
