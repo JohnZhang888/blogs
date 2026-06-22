@@ -29,15 +29,18 @@ export async function genArticleContent(pageID) {
             ${rightBarList}
           </div>
           <div class="box-center">
+          <div class="passage-info">
             <h1 style="margin-top: -8px;">${pageData.title}</h1>
-            <div style="margin: 12px 0 8px 0">
-              <p class="faded-text" style="margin: 0 0 0 0;"><i class="bi bi-pencil-fill"></i>&ensp;${pageData.author}&emsp;&emsp;<i class="bi bi-calendar-fill"></i>&ensp;${pageData.date}</p>
+            
+            
+               <p class="faded-text" style="margin: 0 0 0 0;"><i class="bi bi-pencil-fill"></i>&ensp;${pageData.author}&emsp;&emsp;<i class="bi bi-calendar-fill"></i>&ensp;${pageData.date}</p>
               <p class="faded-text" style="margin: 4px 0 8px 0;">${pageData.description}</p>
               <p><button class="button-primary" onclick="copyMarkdown(this)"><i class="bi bi-clipboard-fill"></i>&ensp;复制 Markdown</button></p>
+            </div>  
               <div class="markdownContent card">
                 ${markdownParsed}
               </div>
-              <p class="faded-text">本文按照 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans" class="link-primary">CC BY-SA 4.0</a> 协议发布。</p>
+              <p class="faded-text passage-info">本文按照 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans" class="link-primary">CC BY-SA 4.0</a> 协议发布。</p>
             </div>
           </div>
         </div>

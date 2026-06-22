@@ -33,3 +33,9 @@ content {
   overflow: hidden;
   line-clamp: 2;
 }
+
+@media (max-width: 575px) {
+  .passage-info {
+    margin: 0px 16px 0px 16px
+  }
+}

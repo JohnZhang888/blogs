@@ -7,6 +7,13 @@
   box-sizing: border-box; /* 建议全局统一设置 border-box */
 }
 
+@media (max-width: 575px) {
+  .container {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+
 /* 小屏幕 ≥576px */
 @media (min-width: 576px) {
   .container {
