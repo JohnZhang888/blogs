@@ -1,9 +1,12 @@
-// a:active, button:active {
-//   filter: brightness(0.8) !important;
-// }
+// 为所有可交互元素添加颜色过渡动画
+* {
+  transition: color 0.1s ease, background-color 0.1s ease, border-color 0.1s ease;
+}
 
-// @media (pointer: fine) {
-//   a:hover, button:hover {
-//     filter: brightness(1.2);
-//   }
-// }
+// 针对特定的按钮和链接元素优化过渡效果
+a, button, .topbar-button, .topbar-link-button, .topbar-dropdown-item, 
+.sidebar-item, .sidebar-item-selected, .drawer-tab, .drawer-close-button,
+.floating-button {
+  transition: color 0.1s ease, background-color 0.1s ease, border-color 0.1s ease;
+}
+

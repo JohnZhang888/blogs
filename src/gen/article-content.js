@@ -1,5 +1,20 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js"
 
+// 生成URL安全的ID
+function generateIdFromText(text) {
+  return text.trim()
+    // 移除明显的特殊字符，但保留字母、数字、中文、空格
+    .replace(/[^\w\s\u4e00-\u9fa5]/g, '')
+    // 转换为小写（对中文无影响）
+    .toLowerCase()
+    // 将空格和多个连续空格替换为单个连字符
+    .replace(/[\s]+/g, '-')
+    // 合并多个连字符
+    .replace(/--+/g, '-')
+    // 移除开头和结尾的连字符
+    .replace(/^-+|-+$/g, '');
+}
+
 // 生成文章页面内容：渲染 Markdown、构建文章列表和目录。
 export async function genArticleContent(pageID) {
   // 加载页面元数据并获取当前页面的信息。
@@ -83,9 +98,10 @@ function buildRightBar(markdownText) {
 
   let html = ``;
   for (const subtitle of subtitles) {
-    html += `<a href="#${subtitle}"><div class="sidebar-item">${subtitle}</div></a>`;
+    const id = generateIdFromText(subtitle);
+    html += `<a href="#${id}"><div class="sidebar-item">${subtitle}</div></a>`;
   }
   return html;
 }
 
-export { buildLeftBar, buildRightBar, sortPageEntries };
+export { buildLeftBar, buildRightBar, sortPageEntries, generateIdFromText as generateIdFromTitle };

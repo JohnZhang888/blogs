@@ -1,4 +1,4 @@
-import { genArticleContent, buildLeftBar, buildRightBar, sortPageEntries } from './article-content.js';
+import { genArticleContent, buildLeftBar, buildRightBar, sortPageEntries, generateIdFromTitle } from './article-content.js';
 import { genIndexContent } from './index.js';
 import { themeOptions, initTheme, setThemeMode } from '../theme.js';
 import hljs from "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/es/highlight.min.js"
@@ -70,24 +70,53 @@ function switchDrawerTab(tabKey) {
 }
 
 function toggleThemeMenu() {
-  themeMenu.hidden = !themeMenu.hidden;
+  if (themeMenu.classList.contains('show')) {
+    // 关闭菜单：直接移除类，让CSS transition自然播放关闭动画
+    themeMenu.classList.remove('show');
+  } else {
+    // 打开菜单：使用强制重排确保动画正确开始
+    themeMenu.classList.remove('show');
+    themeMenu.offsetHeight; // 强制重排
+    themeMenu.classList.add('show');
+  }
 }
 
 function closeThemeMenu() {
-  themeMenu.hidden = true;
+  // 关闭菜单：直接移除类
+  if (themeMenu.classList.contains('show')) {
+    themeMenu.classList.remove('show');
+  }
 }
 
+// 事件绑定
 menuButton?.addEventListener('click', openDrawer);
 drawerClose?.addEventListener('click', closeDrawer);
 drawerScrim?.addEventListener('click', closeDrawer);
 drawerTabs.forEach(tab => tab.addEventListener('click', () => switchDrawerTab(tab.dataset.drawerTab)));
+
+// 移动端抽屉内的链接点击处理（包含关闭抽屉和滚动）
 drawer?.addEventListener('click', event => {
   const link = event.target.closest('a');
   if (link) {
     closeDrawer();
+    
+    // 检查是否是目录链接（包含#hash）
+    if (link.getAttribute('href')?.startsWith('#')) {
+      event.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
   }
 });
 
+// 主题相关事件
 themeButton?.addEventListener('click', event => {
   event.stopPropagation();
   toggleThemeMenu();
@@ -99,12 +128,31 @@ themeItems.forEach(item => item.addEventListener('click', () => {
   closeThemeMenu();
 }));
 
+// 全局点击事件处理程序 - 处理所有目录链接的平滑滚动和主题菜单关闭
 document.addEventListener('click', event => {
+  // 处理目录链接的平滑滚动
+  const link = event.target.closest('a[href^="#"]');
+  if (link && link.getAttribute('href') !== '#') {
+    const targetId = link.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      event.preventDefault();
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+      return; // 防止继续执行主题菜单关闭逻辑
+    }
+  }
+  
+  // 处理主题菜单关闭
   if (!event.target.closest('.topbar-dropdown')) {
     closeThemeMenu();
   }
 });
 
+// 键盘事件
 window.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
     closeDrawer();
@@ -117,9 +165,19 @@ switchDrawerTab('list');
 initTheme(themeItems, themeIcon, themeLabel);
 
 if (pageID !== "index") {
+  // 使用与article-content.js相同的ID生成逻辑
   const subtitles = document.querySelectorAll(".markdownContent h2");
   for (const subtitle of subtitles) {
-    subtitle.setAttribute("id", subtitle.innerHTML)
+    const idText = subtitle.textContent.trim()
+      .replace(/[^\w\s\u4e00-\u9fa5]/g, '')
+      .toLowerCase()
+      .replace(/[\s]+/g, '-')
+      .replace(/--+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    
+    if (idText) {
+      subtitle.setAttribute("id", idText);
+    }
   }
   
   // Highlight code blocks

@@ -107,11 +107,9 @@ a, button {
 
   &:hover {
     box-shadow: var(--shadow-l);
-    transform: translateY(-2px);
   }
 
   &:active {
-    transform: translateY(0);
   }
 
   i {
