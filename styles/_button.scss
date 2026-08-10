@@ -8,7 +8,7 @@ a, button {
   cursor: pointer;
 }
 
-.link-primary, .markdownContent a {
+.link-primary, .markdown-content a {
   @include clickable-color(var(--primary-text));
 }
 

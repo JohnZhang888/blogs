@@ -26,5 +26,12 @@
     "date": "2025-11-13",
     "author": "JZ8",
     "pinValue": 0
+  },
+  "oi-environment": {
+    "title": "在 Windows 11 上配置现代的 OI 学习环境",
+    "description": "配置带有 VS Code、g++、clangd、CPH-NG、Competitive Companion 等的现代化 OI 学习环境。",
+    "date": "2026-08-10",
+    "author": "JZ8",
+    "pinValue": 0
   }
 }

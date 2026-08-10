@@ -51,7 +51,7 @@ export async function genArticleContent(pageID) {
                <p class="faded-text" style="margin: 0 0 0 0;"><span class="material-icons">edit</span>&ensp;${pageData.author}&emsp;&emsp;<span class="material-icons">calendar_month</span>&ensp;${pageData.date}</p>
               <p class="faded-text" style="margin: 4px 0 8px 0;">${pageData.description}</p>
             </div>  
-              <div class="markdownContent card">
+              <div class="markdown-content card">
                 ${markdownParsed}
               </div>
               <p class="faded-text passage-info">本文按照 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans" class="link-primary">CC BY-SA 4.0</a> 协议发布。</p>

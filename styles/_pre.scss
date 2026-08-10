@@ -4,12 +4,13 @@
 .hljs {
   background-color: var(--surface-variant) !important;
   color: var(--text);
-  border-radius: var(--radius-l);
+  border-radius: var(--radius-m);
+  padding: 16px;
 }
 
 code {
   background-color: var(--surface-variant);
   color: var(--text);
   border-radius: var(--radius-m);
-  padding: 2px 4px 2px 4px;
+  padding: 1px 4px 1px 4px;
 }

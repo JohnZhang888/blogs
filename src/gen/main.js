@@ -166,7 +166,7 @@ initTheme(themeItems, themeIcon, themeLabel);
 
 if (pageID !== "index") {
   // 使用与article-content.js相同的ID生成逻辑
-  const subtitles = document.querySelectorAll(".markdownContent h2");
+  const subtitles = document.querySelectorAll(".markdown-content h2");
   for (const subtitle of subtitles) {
     const idText = subtitle.textContent.trim()
       .replace(/[^\w\s\u4e00-\u9fa5]/g, '')
