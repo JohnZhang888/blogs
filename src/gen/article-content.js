@@ -1,4 +1,5 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js"
+import { applyTableSpanToHTML } from '../table-span.js'
 
 // 生成URL安全的ID
 function generateIdFromText(text) {
@@ -24,9 +25,24 @@ export async function genArticleContent(pageID) {
 
   // 加载当前文章的 Markdown 源内容。
   const contentResponse = await fetch(`page-data/${pageID}.md`);
-  const passageMarkdown = (await contentResponse.text()).replace(/\\/g, "\\\\");
+  const passageMarkdown = await contentResponse.text();
 
-  const markdownParsed = marked.parse(passageMarkdown);
+  // 提取并保护数学公式（$...$ / $$...$$），避免 marked 破坏 TeX 内容。
+  // 若不做保护，\_、\{、\} 等转义会被 marked 当作普通转义或强调符处理，
+  // 导致公式中的 $...$ 对被打散（如 $\mathrm{A\_B\_}$ 中下划线触发强调），KaTeX 无法渲染。
+  const mathBlocks = [];
+  const MATH_PATTERN = /\$\$[\s\S]+?\$\$|\$[^$\n]+\$/g;
+  const protectedMarkdown = passageMarkdown.replace(MATH_PATTERN, (match) => {
+    mathBlocks.push(match);
+    return `%%MATH${mathBlocks.length - 1}%%`;
+  });
+
+  // 渲染 Markdown，并应用洛谷风格表格合并（^ 向上合并、< 向左合并）。
+  let markdownParsed = marked.parse(protectedMarkdown);
+  markdownParsed = applyTableSpanToHTML(markdownParsed);
+
+  // 还原被保护的数学公式，交由 KaTeX 在页面加载后自动渲染。
+  markdownParsed = markdownParsed.replace(/%%MATH(\d+)%%/g, (_, index) => mathBlocks[Number(index)]);
 
   const sortedEntries = sortPageEntries(data);
   const leftBarList = buildLeftBar(sortedEntries, pageID);

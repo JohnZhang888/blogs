@@ -1,12 +1,40 @@
 table {
-  border-collapse: collapse;
-  border-radius: var(--radius-l);
+  // collapse 会忽略 table 上的 border-radius，改用 separate + spacing:0 达到相同效果
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius-m);
   overflow: hidden;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--seperator);
 }
 
 th, td {
   padding: 8px 16px 8px 16px;
-  z-index: -1;
-  border: 1px solid var(--surface-border);
+  // z-index: -1;
+  border: 0.5px solid var(--seperator);
+}
+
+// 去掉单元格外侧边框：外轮廓统一由 table 的圆角边框提供，
+// 避免单元格边框在圆角处被 overflow:hidden 裁切导致角部宽度不一致
+thead tr:first-child th,
+thead tr:first-child td,
+table > tr:first-child th,
+table > tr:first-child td {
+  border-top: none;
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td,
+table > tr:last-child th,
+table > tr:last-child td {
+  border-bottom: none;
+}
+
+th:first-child,
+td:first-child {
+  border-left: none;
+}
+
+th:last-child,
+td:last-child {
+  border-right: none;
 }
