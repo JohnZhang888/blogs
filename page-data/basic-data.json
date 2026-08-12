@@ -1,8 +1,134 @@
 {
-  "26060901": {
-    "title": "题解：P16724 [GKS 2019 #A] Parcels",
+  "9331": {
+    "title": "9 : 3 : 3 : 1 变式总结",
     "description": "",
-    "date": "2026-06-09",
+    "date": "2026-04-18",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251028": {
+    "title": "2025-10-28 aoao Round 比赛总结",
+    "description": "",
+    "date": "2025-10-28",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251029": {
+    "title": "ZR-J 2025-10-29 比赛总结",
+    "description": "",
+    "date": "2025-10-29",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251103": {
+    "title": "2025-11-03 NOIP 模拟赛总结",
+    "description": "",
+    "date": "2025-11-03",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251107": {
+    "title": "NOIP 模拟赛 3 比赛总结",
+    "description": "",
+    "date": "2025-11-07",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251109": {
+    "title": "NOIP 模拟赛 4 总结",
+    "description": "",
+    "date": "2025-11-09",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251111": {
+    "title": "NOIP 模拟赛 5 总结",
+    "description": "",
+    "date": "2025-11-11",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251112": {
+    "title": "Aoao Round 2 比赛总结",
+    "description": "",
+    "date": "2025-11-12",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251115": {
+    "title": "NOIP 模拟赛 6 总结",
+    "description": "",
+    "date": "2025-11-15",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251117": {
+    "title": "NOIP 模拟赛 7 总结",
+    "description": "",
+    "date": "2025-11-17",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251119": {
+    "title": "小猫 round 比赛总结",
+    "description": "",
+    "date": "2025-11-19",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251121": {
+    "title": "小蛐蛐 NOIP Round 1 总结",
+    "description": "",
+    "date": "2025-11-21",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251124": {
+    "title": "NOIP 模拟赛 8 总结",
+    "description": "",
+    "date": "2025-11-24",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251125": {
+    "title": "NOIP 模拟赛 9 比赛总结",
+    "description": "",
+    "date": "2025-11-25",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "251126": {
+    "title": "NOIP 模拟赛 10 比赛总结",
+    "description": "",
+    "date": "2025-11-26",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "260402": {
+    "title": "2026-04-02 模拟赛总结",
+    "description": "",
+    "date": "2026-04-06",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "260418": {
+    "title": "2026-04-18 模拟赛总结",
+    "description": "",
+    "date": "2026-04-19",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "19166996": {
+    "title": "MX-S 10-25 比赛总结",
+    "description": "",
+    "date": "2025-10-26",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "19194335": {
+    "title": "NOIP 模拟赛 2 总结",
+    "description": "",
+    "date": "2025-11-05",
     "author": "JZ8",
     "pinValue": 0
   },
@@ -13,10 +139,10 @@
     "author": "JZ8",
     "pinValue": 0
   },
-  "9331": {
-    "title": "9 : 3 : 3 : 1 变式总结",
+  "26060901": {
+    "title": "题解：P16724 [GKS 2019 #A] Parcels",
     "description": "",
-    "date": "2026-04-18",
+    "date": "2026-06-09",
     "author": "JZ8",
     "pinValue": 0
   },
@@ -31,6 +157,62 @@
     "title": "在 Windows 11 上配置现代的 OI 学习环境",
     "description": "配置带有 VS Code、g++、clangd、CPH-NG、Competitive Companion 等的现代化 OI 学习环境。",
     "date": "2026-08-10",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "fast-io": {
+    "title": "一个并不好用也并不怎么快的读写模板",
+    "description": "讲解自用读写模板 read/write/err 函数的用法、特性与实现思路。",
+    "date": "2026-03-22",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "tarjan": {
+    "title": "学习笔记：连通性相关的 Tarjan 算法",
+    "description": "讲解强连通分量、割边（桥）等连通性问题的 Tarjan 算法及缩点应用。",
+    "date": "2025-11-13",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "csp2025": {
+    "title": "CSP 2025 游记",
+    "description": "记录 CSP 2025 从备考到参赛的完整经历与心路历程。",
+    "date": "2025-11-06",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "inv": {
+    "title": "学习笔记：乘法逆元",
+    "description": "讲解乘法逆元的定义与性质，及扩展欧几里得、费马小定理等求法。",
+    "date": "2025-10-31",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "hpd": {
+    "title": "学习笔记：重链剖分",
+    "description": "讲解重链剖分的概念，并配合线段树解决树上路径修改与查询问题。",
+    "date": "2025-10-27",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "lca": {
+    "title": "求解 LCA 四种方法及其比较",
+    "description": "讲解倍增、dfs 序、树剖、tarjan 四种求 LCA 的方法并进行优劣比较。",
+    "date": "2025-10-27",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "ccw": {
+    "title": "计算几何初步：CCW 与判断两线段的相交性",
+    "description": "讲解 CCW（向量叉积）算法，并利用其判断两条线段是否相交。",
+    "date": "2025-10-27",
+    "author": "JZ8",
+    "pinValue": 0
+  },
+  "hash": {
+    "title": "哈希",
+    "description": "讲解进制哈希的原理与自然溢出实现，并介绍字符串判重等应用。",
+    "date": "2025-08-28",
     "author": "JZ8",
     "pinValue": 0
   }
