@@ -1,0 +1,137 @@
+@import "variables/color";
+@import "variables/sizes";
+
+// ==========================================================================
+// 折叠框（details / summary）
+// --------------------------------------------------------------------------
+// 1. 通用样式：样式化文章里原生 <details>/<summary>（无需 JS 即可用）。
+// 2. 洛谷 callout 折叠框（:::info / :::success / :::warning / :::error），
+//    通过 .fold-{type} 使用 --fold-{type} 强调色；info 类型为中性色，
+//    与原生 <details> 一致。
+// 3. 展开/收起动画：由 main.js 用 Web Animations API 精确控制 .fold-body
+//    高度（原生 <details> 移除 [open] 时浏览器内部机制会干扰 CSS
+//    grid-template-rows 过渡，Chrome 下收起动画会卡住/失效）。
+// ==========================================================================
+
+// ---------- 通用折叠框外壳 ----------
+.markdown-content details {
+  box-sizing: border-box;
+  border: 1px solid var(--seperator);
+  border-radius: var(--radius-m);
+  background-color: var(--surface-variant);
+  margin: 16px 0;
+  overflow: hidden;
+}
+
+// ---------- 标题行（summary） ----------
+.markdown-content details > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 12px;
+  cursor: pointer;
+  list-style: none;                    // 隐藏原生三角形
+  font-weight: 600;
+  color: var(--text);
+  user-select: none;
+  -webkit-user-select: none;
+
+  &:hover {
+    background-color: var(--menu-hover);
+  }
+  &:active {
+    background-color: var(--menu-selected);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+    border-radius: var(--radius-m);
+  }
+}
+
+// Safari 隐藏原生三角形
+.markdown-content details > summary::-webkit-details-marker {
+  display: none;
+}
+
+// ---------- 展开/收起箭头 ----------
+.fold-chevron {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  transition: transform 0.28s ease;
+}
+
+.markdown-content details.fold-open > summary .fold-chevron {
+  transform: rotate(180deg);
+}
+
+// ---------- 折叠动画 ----------
+// 原生 <details> 在移除 [open] 时，浏览器内部机制会干扰 CSS grid-template-rows
+// 过渡（Chrome 下收起动画会卡住/失效）。因此折叠状态由 main.js 用
+// Web Animations API 精确控制 .fold-body 的高度，展开/收起双向都可靠。
+// 这里仅提供初始折叠状态与无 JS 时的兜底（原生 <details> 可直接切换）。
+.markdown-content details > .fold-body {
+  overflow: hidden;
+  height: 0;
+}
+
+.markdown-content details[open] > .fold-body {
+  height: auto;
+}
+
+.fold-body-inner {
+  box-sizing: border-box;
+  padding: 4px 16px 0px 16px;
+}
+
+// ==========================================================================
+// 洛谷 callout 折叠框（:::info 等）
+// ==========================================================================
+.markdown-content details.fold {
+  --fold-accent: var(--fold-info);
+  border: 1px solid color-mix(in oklch, var(--fold-accent) 35%, var(--seperator));
+  border-left: 4px solid var(--fold-accent);
+  background-color: color-mix(in oklch, var(--fold-accent) 8%, var(--surface));
+}
+
+.markdown-content details.fold-info    { --fold-accent: var(--fold-info); }
+.markdown-content details.fold-success { --fold-accent: var(--fold-success); }
+.markdown-content details.fold-warning { --fold-accent: var(--fold-warning); }
+.markdown-content details.fold-error   { --fold-accent: var(--fold-error); }
+
+.markdown-content details.fold > summary {
+  color: var(--fold-accent);
+}
+
+.markdown-content details.fold > summary .fold-chevron {
+  color: var(--fold-accent);
+}
+
+.markdown-content details.fold .fold-type-icon {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  color: var(--fold-accent);
+}
+
+.markdown-content details.fold > summary .fold-title {
+  color: var(--fold-accent);
+}
+
+// info 类型：中性色，与原生 <details> 完全一致（不使用强调色）
+.markdown-content details.fold-info {
+  border: 1px solid var(--seperator);
+  background-color: var(--surface-variant);
+}
+.markdown-content details.fold-info > summary {
+  color: var(--text);
+}
+.markdown-content details.fold-info > summary .fold-chevron {
+  color: var(--text-secondary);
+}
+.markdown-content details.fold-info .fold-type-icon {
+  color: var(--text-secondary);
+}
+.markdown-content details.fold-info > summary .fold-title {
+  color: var(--text);
+}

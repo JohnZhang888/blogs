@@ -1,5 +1,9 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js"
 import { applyTableSpanToHTML } from '../table-span.js'
+import { registerFold } from '../fold.js'
+
+// 注册洛谷风格折叠框扩展（:::info 等），需在模块全局作用域执行一次。
+registerFold(marked);
 
 // 生成URL安全的ID
 function generateIdFromText(text) {

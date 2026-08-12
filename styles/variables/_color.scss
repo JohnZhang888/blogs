@@ -53,6 +53,12 @@
   --shadow-l: 0px 8px 24px rgba(0,0,0,0.12), 0px 4px 8px rgba(0,0,0,0.06);
   --shadow-l-right: 8px 0px 24px rgba(0,0,0,0.12), 0px 4px 8px rgba(0,0,0,0.06);
 
+  // 折叠框（callout）类型强调色
+  --fold-info: #1E88E5;
+  --fold-success: #2E7D32;
+  --fold-warning: #F57C00;
+  --fold-error: #D32F2F;
+
   // --block-border-image-secondary: linear-gradient(to bottom, #0000000F 0%, #0000000F 91%, #00000029 100%);
   // --block-border-image-primary: linear-gradient(to bottom, #FFFFFF14 0%, #FFFFFF14 91%, #00000066 100%);
 }
@@ -78,6 +84,12 @@
   --shadow-right: /*4px 0px 12px rgba(255,255,255,0.07), 0px 2px 4px rgba(255,255,255,0.03)*/ 0px 0px 0px 1px var(--surface-border);
   --shadow-l: /*0px 8px 24px rgba(255,255,255,0.09), 0px 4px 8px rgba(255,255,255,0.04)*/ 0px 0px 0px 1px var(--surface-border);
   --shadow-l-right: /*8px 0px 24px rgba(255,255,255,0.12), 0px 4px 8px rgba(255,255,255,0.06)*/ 0px 0px 0px 1px var(--surface-border);
+
+  // 折叠框（callout）类型强调色
+  --fold-info: #64B5F6;
+  --fold-success: #81C784;
+  --fold-warning: #FFB74D;
+  --fold-error: #E57373;
 }
 
 @mixin acrylic {

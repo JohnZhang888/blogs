@@ -1,9 +1,6 @@
-<details>
-<summary>AI 使用情况披露</summary>
-
+:::info[AI 使用情况披露]
 笔者手动写完全文后交给 DeepSeek V4 Flash 修改了少量错别字、语病与排版不规范之处。笔者保证自己的贡献远大于 AI 的贡献。
-
-</details>
+:::
 
 ## 前言
 
@@ -18,34 +15,28 @@
 
 ## 安装 msys2、g++ 与 clangd
 
-<details>
-<summary>这三个东西是什么？</summary>
-
+:::info[这三个东西是什么？]
 - **g++** 是大多数编程竞赛（包括 CCF NOI 系列竞赛）使用的 C++ 编译器。
 - **clangd** 是一款高效率的语言服务器，用于在编辑器中提供代码补全、错误提示等。
 - **msys2** 用于便捷地安装和管理 g++、clangd 等开发工具，这是一个为 Windows 操作系统提供类 Unix 开发环境的软件发行版和构建平台。
-
-</details>
+:::
 
 访问 [msys2 官网的下载页面](https://www.msys2.org/#installation)。对于大多数电脑（x86 架构），点击左侧按钮下载安装包；如果你的电脑是 arm 架构，则点击右侧按钮。
-<details>
-<summary>如何查看电脑是 x86 架构还是 arm64 架构？</summary>
 
+![](https://cdn.luogu.com.cn/upload/image_hosting/zdz0d5s5.png)
+
+:::info[如何查看电脑是 x86 架构还是 arm64 架构？]
 - 打开「设置」。
 - 进入「系统」>「关于」。
 - 查看「设备信息」中的「系统类型」：
   - 如果显示「64 位操作系统，基于 x64 的处理器」，为 x86 架构；
   - 如果显示「基于 ARM 的处理器」，则是 arm64 架构。
+:::
 
-</details>
-
-<details>
-<summary>下载速度太慢怎么办？</summary>
-
+:::info[下载速度太慢怎么办？]
 - 方法一：访问 [gh-proxy](https://gh-proxy.com/)，根据提示获取加速链接。
 - 方法二：使用 Watt Toolkit 或 dev-sidecar 等工具加速 GitHub。
-
-</details>
+:::
 
 运行安装程序，根据提示安装，记住安装路径。在最后一步，取消勾选「Run MSYS2 Now」。
 
@@ -115,8 +106,7 @@ pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain mingw-w64-ucrt-x86
 
 回到 VS Code，点击左下角的齿轮按钮 >「代码片段」>「cpp」。在打开的文件中，选中从 `// "Print to console": {` 到下面的第一个 `}` 的全部内容，按下 `Ctrl + /` 取消注释。将 `"prefix": "log"` 中的 `log` 改为你想要的触发词，例如 `cpp`。再将 `"body"` 后边的中括号内的内容替换为一对双引号，在这对双引号中粘贴你刚才从网站上复制的内容。一番操作之后，你的 `cpp.json` 看起来应该像这样：
 
-<details>
-<summary>`cpp.json`</summary>
+:::info[`cpp.json`]
 
 ```json
 {
@@ -143,18 +133,15 @@ pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain mingw-w64-ucrt-x86
 	// }
 }
 ```
-
-</details>
+:::
 
 ## 配置 CPH-NG
 
 访问 [Crx搜搜](https://crxsoso.com)，在你使用的浏览器的标签页下搜索 Competitive Companion，下载离线安装包。打开浏览器的扩展管理页面，打开开发者模式，将下载的安装包拖到页面中。
-<details>
-<summary>为什么不在浏览器扩展商店中安装 Competitive Companion？</summary>
 
+:::info[为什么不在浏览器扩展商店中安装 Competitive Companion？]
 由于我不太清楚的原因，在 Edge 扩展商店中下载的 Competitive Companion 无法正确解析洛谷题目。其它浏览器的情况尚未经过测试。
-
-</details>
+:::
 
 然后在浏览器扩展商店中安装 CPH-NG Submit 扩展。
 
