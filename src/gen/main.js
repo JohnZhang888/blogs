@@ -52,9 +52,17 @@ async function buildDrawerContent() {
 }
 
 function openDrawer() {
-  drawer?.classList.add('open');
-  drawer?.removeAttribute('hidden');
+  if (!drawer) return;
+
+  // 先让抽屉进入可渲染状态（去掉 hidden 会从 display:none 变为可见）
+  drawer.removeAttribute('hidden');
   drawerScrim?.removeAttribute('hidden');
+
+  // 强制一次重排，确保浏览器先应用“关闭”状态的样式（translateX(-110%)、opacity:0），
+  // 否则首次展开时起始样式和 .open 状态在同一帧内计算，过渡动画不会触发
+  void drawer.offsetWidth;
+
+  drawer.classList.add('open');
 }
 
 function closeDrawer() {
@@ -69,23 +77,37 @@ function switchDrawerTab(tabKey) {
   });
 }
 
+function openThemeMenu() {
+  themeMenu.classList.remove('closing');
+  themeMenu.classList.add('show');
+  themeButton?.setAttribute('aria-expanded', 'true');
+}
+
 function toggleThemeMenu() {
   if (themeMenu.classList.contains('show')) {
-    // 关闭菜单：直接移除类，让CSS transition自然播放关闭动画
-    themeMenu.classList.remove('show');
+    closeThemeMenu();
   } else {
-    // 打开菜单：使用强制重排确保动画正确开始
-    themeMenu.classList.remove('show');
-    themeMenu.offsetHeight; // 强制重排
-    themeMenu.classList.add('show');
+    openThemeMenu();
   }
 }
 
 function closeThemeMenu() {
-  // 关闭菜单：直接移除类
-  if (themeMenu.classList.contains('show')) {
-    themeMenu.classList.remove('show');
+  if (!themeMenu.classList.contains('show')) {
+    return;
   }
+
+  themeMenu.classList.remove('show');
+  themeMenu.classList.add('closing');
+  themeButton?.setAttribute('aria-expanded', 'false');
+
+  const finishClose = () => {
+    themeMenu.classList.remove('closing');
+    themeMenu.removeEventListener('animationend', finishClose);
+    themeMenu.removeEventListener('animationcancel', finishClose);
+  };
+
+  themeMenu.addEventListener('animationend', finishClose, { once: true });
+  themeMenu.addEventListener('animationcancel', finishClose, { once: true });
 }
 
 // 折叠框展开/收起动画（Web Animations API）

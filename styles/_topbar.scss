@@ -80,6 +80,38 @@ body.dark .logo-image {
   opacity: 1;
   transform: translateY(0);
   visibility: visible;
+  pointer-events: auto;
+}
+
+.topbar-dropdown-menu.closing {
+  animation: theme-menu-close 0.2s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes theme-menu-open {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+  }
+}
+
+@keyframes theme-menu-close {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+    visibility: hidden;
+  }
 }
 
 .topbar-button:active,
@@ -123,18 +155,16 @@ body.dark .logo-image {
   min-width: 180px;
   box-shadow: var(--shadow-l);
   border-radius: var(--radius-m);
-  
-  // 使用opacity和transform控制显示/隐藏，移除visibility
+  visibility: hidden;
   opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none; // 确保隐藏时不可点击
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateY(-10px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
 }
 
 .topbar-dropdown-menu.show {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto; // 显示时可点击
+  animation: theme-menu-open 0.2s ease forwards;
+  pointer-events: auto;
 }
 
 .topbar-dropdown-item {
@@ -241,12 +271,17 @@ body.dark .logo-image {
   z-index: 114516;
   padding: 16px;
   overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
   transform: translateX(-110%);
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease, visibility 0s linear 0.25s;
 }
 
 .mobile-drawer.open {
+  visibility: visible;
+  opacity: 1;
   transform: translateX(0);
+  transition: transform 0.25s ease, opacity 0.25s ease, visibility 0s linear 0s;
 }
 
 .drawer-panel {

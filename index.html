@@ -60,7 +60,7 @@
           <span>主站</span>
         </a>
         <div class="topbar-dropdown">
-          <button class="topbar-button topbar-theme-button" type="button" aria-haspopup="true" aria-expanded="false" onclick="switchDropdownMenu()">
+          <button class="topbar-button topbar-theme-button" type="button" aria-haspopup="true" aria-expanded="false">
             <span class="material-icons">computer</span>
             <span class="topbar-theme-label">跟随浏览器</span>
             <span class="material-icons">arrow_drop_down</span>
@@ -118,32 +118,6 @@
         }
       });
 
-      function switchDropdownMenu() {
-        let menu = document.querySelector(".topbar-dropdown-menu");
-        if (menu.style.display === "none" || !menu.style.display) {
-          menu.style.display = "block";
-        } else {
-          menu.style.display = "none";
-        }
-      }
-
-      // 点击下拉菜单项后关闭菜单
-      document.querySelectorAll('.topbar-dropdown-item').forEach(item => {
-        item.addEventListener('click', () => {
-          document.querySelector('.topbar-dropdown-menu').style.display = 'none';
-        });
-      });
-
-      // 点击菜单外部区域时关闭菜单
-      document.addEventListener('click', (event) => {
-        const menu = document.querySelector('.topbar-dropdown-menu');
-        const themeButton = document.querySelector('.topbar-theme-button');
-        
-        // 如果点击的不是菜单本身也不是主题按钮，则关闭菜单
-        if (!menu.contains(event.target) && !themeButton.contains(event.target)) {
-          menu.style.display = 'none';
-        }
-      });
     </script>
   </body>
 
