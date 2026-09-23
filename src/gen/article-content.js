@@ -1,4 +1,4 @@
-import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js"
+import { marked } from "../../resources/vendor/marked/marked.esm.js"
 import { applyTableSpanToHTML } from '../table-span.js'
 import { registerFold } from '../fold.js'
 

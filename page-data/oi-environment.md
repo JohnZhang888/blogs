@@ -23,7 +23,7 @@
 
 访问 [msys2 官网的下载页面](https://www.msys2.org/#installation)。对于大多数电脑（x86 架构），点击左侧按钮下载安装包；如果你的电脑是 arm 架构，则点击右侧按钮。
 
-![](https://cdn.luogu.com.cn/upload/image_hosting/zdz0d5s5.png)
+![](resources/images/oi-environment-msys2-install.png)
 
 :::info[如何查看电脑是 x86 架构还是 arm64 架构？]
 - 打开「设置」。
@@ -51,7 +51,7 @@ sed -i "s#mirror.msys2.org/#mirrors.ustc.edu.cn/msys2/#g" /etc/pacman.d/mirrorli
 
 接着配置系统环境变量。打开开始菜单搜索「编辑系统环境变量」，点击「打开」。接着如图所示，点击「环境变量」>「【你的用户名】的用户变量」>「Path」>「编辑」>「新建」，在输入框中输入「`【msys2 的安装路径】\ucrt64\bin`」（默认为 `C:\msys64\ucrt64\bin`）。然后如图点击三个窗口的「确定」。
 
-![](https://cdn.luogu.com.cn/upload/image_hosting/tb605bi7.png)
+![](resources/images/oi-environment-vscode-install.png)
 
 然后开始安装 g++ 和 clangd。打开 MSYS2 UCRT64，运行
 

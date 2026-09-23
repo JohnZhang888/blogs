@@ -7,8 +7,8 @@ export const themeOptions = [
 const themeCookieName = 'themeMode';
 const hljsThemeLinkId = 'hljs-theme';
 const hljsThemeUrls = {
-  light: 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github.min.css',
-  dark: 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/github-dark.min.css'
+  light: 'resources/vendor/highlight.js/github.min.css',
+  dark: 'resources/vendor/highlight.js/github-dark.min.css'
 };
 
 function readCookie(name) {

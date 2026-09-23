@@ -1,7 +1,7 @@
 import { genArticleContent, buildLeftBar, buildRightBar, sortPageEntries, generateIdFromTitle } from './article-content.js';
 import { genIndexContent } from './index.js';
 import { themeOptions, initTheme, setThemeMode } from '../theme.js';
-import hljs from "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/es/highlight.min.js"
+import hljs from "../../resources/vendor/highlight.js/highlight.min.js"
 
 const page = document.querySelector("content");
 let pageID = new URLSearchParams(window.location.search).get("page");
