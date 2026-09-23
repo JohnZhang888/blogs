@@ -1,5 +1,7 @@
 body, button {
-  font-family: "Noto Sans", "Noto Sans SC", sans-serif;
+  // Inter is self-hosted (styles/_fonts.scss) and covers Latin only;
+  // CJK text falls back to the system sans-serif.
+  font-family: "Inter", sans-serif;
   font-size: 1rem;
   color: var(--text);
   font-optical-sizing: auto;
@@ -7,7 +9,7 @@ body, button {
 }
 
 h1, h2, h3 {
-  font-family: "Noto Sans", "Noto Sans SC", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
   margin: 16px 0 8px 0;
