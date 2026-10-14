@@ -1,0 +1,10 @@
+﻿import * as M from "./_marked.mjs";
+const marked = M.marked ?? M.default?.marked ?? M.default;
+import fs from "fs";
+const md = fs.readFileSync("page-data/lca.md","utf8");
+const lines = md.split(/\r?\n/);
+const seg = lines.slice(83,120).join("\n");
+console.log("===SOURCE===");
+console.log(JSON.stringify(seg));
+console.log("===HTML===");
+console.log(marked.parse(seg));
